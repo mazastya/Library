@@ -7,8 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Catalog.API\Controllers\" />
-      <Folder Include="Catalog.API\DTOs\Books\" />
+        <Folder Include="Catalog.API\Controllers\"/>
+        <Folder Include="Catalog.API\DTOs\Books\"/>
     </ItemGroup>
+
+    <PropertyGroup>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
 
 </Project>
