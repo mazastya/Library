@@ -12,11 +12,12 @@ public class BookService(IBookRepository bookRepository)
 
     public async Task<List<Book>> GetBooksAsync() => await _bookRepository.GetBooksAsync();
 
-    public async Task CreateBookAsync(string title, string author, BookStatus? status)
+    public async Task<Book> CreateBookAsync(string title, string author, BookStatus? status)
     {
         var book = new Book(title, author, status);
         await _bookRepository.AddAsync(book);
         await _bookRepository.SaveAsync();
+        return book;
     }
 
     public async Task UpdateBookAsync(BookId bookId, string? title, string? author, BookStatus? status)
