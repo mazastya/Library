@@ -7,7 +7,7 @@ public class BookService(IBookRepository bookRepository)
 {
     private readonly IBookRepository _bookRepository = bookRepository;
 
-    public async Task<Book> GetBookByIdAsync(BookId bookId) =>
+    public async Task<Book> GetBookByIdAsync(Guid bookId) =>
         await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
 
     public async Task<List<Book>> GetBooksAsync() => await _bookRepository.GetBooksAsync();
@@ -20,21 +20,21 @@ public class BookService(IBookRepository bookRepository)
         return book;
     }
 
-    public async Task UpdateBookAsync(BookId bookId, string? title, string? author, BookStatus? status)
+    public async Task UpdateBookAsync(Guid bookId, string? title, string? author, BookStatus? status)
     {
         var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
         await _bookRepository.UpdateAsync(book);
         await _bookRepository.SaveAsync();
     }
 
-    public async Task DeleteBookAsync(BookId bookId)
+    public async Task DeleteBookAsync(Guid bookId)
     {
         var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
-        await _bookRepository.DeleteAsync(book);
+        await _bookRepository.DeleteAsync(bookId);
         await _bookRepository.SaveAsync();
     }
 
-    public async Task MarkBookAsReservedAsync(BookId bookId)
+    public async Task MarkBookAsReservedAsync(Guid bookId)
     {
         var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
 

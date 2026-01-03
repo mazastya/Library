@@ -3,7 +3,7 @@ using Catalog.Catalog.Domain.Books;
 namespace Catalog.Catalog.API.DTOs.Books;
 
 public record BookResponse(
-    BookId BookId,
+    Guid BookId,
     string Title,
     string Author,
     BookStatus BookStatus)

@@ -3,9 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Catalog.Catalog.Infrastructure.Persistence;
 
-public class CatalogDbContext : DbContext
+public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbContext(options)
 {
     public DbSet<BookEntity> Books { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
