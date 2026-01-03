@@ -1,4 +1,5 @@
 using Catalog.Catalog.Domain.Books;
+using Catalog.Catalog.Domain.Exceptions;
 using Catalog.Catalog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,32 +11,47 @@ public class BookRepository(CatalogDbContext dbContext) : IBookRepository
 
     public async Task<Book?> GetBookByIdAsync(BookId bookId)
     {
-        var entity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == bookId);
-        return entity?.EntityToDomainModel(entity);
+        var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == bookId);
+        return bookEntity?.EntityToDomainModel();
     }
 
-    public Task<List<Book>> GetBooksAsync()
+    public async Task<List<Book>> GetBooksAsync()
     {
-        throw new NotImplementedException();
+        var bookEntities = await _dbContext.Books.OrderBy(b => b.Title).ToListAsync();
+        return bookEntities.Select(b => b.EntityToDomainModel()).ToList();
     }
 
-    public Task AddAsync(Book book)
+    public async Task AddAsync(Book book)
     {
-        throw new NotImplementedException();
+        var bookEntity = BookEntity.DomainBookModelToEntity(book);
+        await _dbContext.Books.AddAsync(bookEntity);
     }
 
-    public Task SaveAsync()
+    public async Task SaveAsync()
     {
-        throw new NotImplementedException();
+        await _dbContext.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(string? title, string? author, BookStatus? status)
+    public async Task UpdateAsync(Book book)
     {
-        throw new NotImplementedException();
+        var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == book.BookId);
+        if (bookEntity == null)
+        {
+            throw new BookNotFoundException();
+        }
+
+        bookEntity.Id = book.BookId;
+        bookEntity.Title = book.Title;
+        bookEntity.Author = book.Author;
+        bookEntity.BookStatus = book.Status;
+        _dbContext.Update(bookEntity);
+        await _dbContext.SaveChangesAsync();
     }
 
-    public Task RemoveAsync(Book book)
+    public async Task DeleteAsync(Book book)
     {
-        throw new NotImplementedException();
+        var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == book.BookId);
+        if (bookEntity != null)
+            _dbContext.Books.Remove(bookEntity);
     }
 }

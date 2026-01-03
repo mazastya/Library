@@ -8,7 +8,7 @@ public class BookService(IBookRepository bookRepository)
     private readonly IBookRepository _bookRepository = bookRepository;
 
     public async Task<Book> GetBookByIdAsync(BookId bookId) =>
-        await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookNotFoundException(bookId);
+        await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
 
     public async Task<List<Book>> GetBooksAsync() => await _bookRepository.GetBooksAsync();
 
@@ -21,27 +21,27 @@ public class BookService(IBookRepository bookRepository)
 
     public async Task UpdateBookAsync(BookId bookId, string? title, string? author, BookStatus? status)
     {
-        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookNotFoundException(bookId);
-        await _bookRepository.UpdateAsync(title, author, status);
+        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
+        await _bookRepository.UpdateAsync(book);
         await _bookRepository.SaveAsync();
     }
 
     public async Task DeleteBookAsync(BookId bookId)
     {
-        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookNotFoundException(bookId);
-        await _bookRepository.RemoveAsync(book);
+        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
+        await _bookRepository.DeleteAsync(book);
         await _bookRepository.SaveAsync();
     }
 
     public async Task MarkBookAsReservedAsync(BookId bookId)
     {
-        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookNotFoundException(bookId);
+        var book = await _bookRepository.GetBookByIdAsync(bookId) ?? throw new BookWithIdNotFoundException(bookId);
 
         if (book.Status != BookStatus.Available)
             throw new BookStatusException(BookStatus.Reserved, bookId);
 
         book.Status = BookStatus.Reserved;
-        await _bookRepository.UpdateAsync(null, null, book.Status);
+        await _bookRepository.UpdateAsync(book);
         await _bookRepository.SaveAsync();
     }
 

@@ -14,8 +14,8 @@ public class CatalogDbContext : DbContext
         modelBuilder.Entity<BookEntity>(entity =>
             {
                 entity.HasKey(e => e.Id);
-                entity.Property(e => e.Author).IsRequired();
-                entity.Property(e => e.Title).IsRequired();
+                entity.Property(e => e.Author).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.Title).IsRequired().HasMaxLength(100);
                 entity.Property(e => e.BookStatus).IsRequired().HasConversion<int>();
             }
         );

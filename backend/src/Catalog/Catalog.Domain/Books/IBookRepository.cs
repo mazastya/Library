@@ -6,6 +6,6 @@ public interface IBookRepository
     public Task<List<Book>> GetBooksAsync();
     public Task AddAsync(Book book);
     public Task SaveAsync();
-    public Task UpdateAsync(string? title, string? author, BookStatus? status);
-    public Task RemoveAsync(Book book);
+    public Task UpdateAsync(Book book);
+    public Task DeleteAsync(Book book);
 }
