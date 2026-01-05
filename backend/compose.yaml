@@ -1,0 +1,7 @@
+﻿services:
+  catalog.web:
+    image: catalog.web
+    build:
+      context: .
+      dockerfile: src/Catalog/Catalog.Web/Dockerfile
+
