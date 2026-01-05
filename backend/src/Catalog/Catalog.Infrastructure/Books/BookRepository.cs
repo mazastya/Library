@@ -9,7 +9,7 @@ public class BookRepository(CatalogDbContext dbContext) : IBookRepository
 {
     private readonly CatalogDbContext _dbContext = dbContext;
 
-    public async Task<Book?> GetBookByIdAsync(BookId bookId)
+    public async Task<Book?> GetBookByIdAsync(Guid bookId)
     {
         var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == bookId);
         return bookEntity?.EntityToDomainModel();
@@ -48,9 +48,9 @@ public class BookRepository(CatalogDbContext dbContext) : IBookRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(Book book)
+    public async Task DeleteAsync(Guid bookId)
     {
-        var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == book.BookId);
+        var bookEntity = await _dbContext.Books.FirstOrDefaultAsync(b => b.Id == bookId);
         if (bookEntity != null)
             _dbContext.Books.Remove(bookEntity);
     }

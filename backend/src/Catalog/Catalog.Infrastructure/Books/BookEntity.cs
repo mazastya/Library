@@ -6,7 +6,7 @@ namespace Catalog.Catalog.Infrastructure.Books;
 [Table("Books")]
 public class BookEntity
 {
-    public BookId Id { get; set; } = BookId.New();
+    public Guid Id { get; set; } = Guid.NewGuid();
     public string Title { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;
     public BookStatus BookStatus { get; set; } = BookStatus.Available;
