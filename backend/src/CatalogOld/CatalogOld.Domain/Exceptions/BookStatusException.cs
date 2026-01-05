@@ -1,6 +1,6 @@
-using Catalog.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Books;
 
-namespace Catalog.Catalog.Domain.Exceptions;
+namespace CatalogOld.Catalog.Domain.Exceptions;
 
 public class BookStatusException(BookStatus status, Guid bookId)
     : DomainException($"Can't change the status to {status} of a book - {bookId}");

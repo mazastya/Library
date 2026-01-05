@@ -1,4 +1,4 @@
-namespace Catalog.Catalog.Domain.Books;
+namespace CatalogOld.Catalog.Domain.Books;
 
 public interface IBookRepository
 {

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Catalog.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Books;
 
-namespace Catalog.Catalog.Infrastructure.Books;
+namespace CatalogOld.Catalog.Infrastructure.Books;
 
 [Table("Books")]
 public class BookEntity

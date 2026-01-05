@@ -1,6 +1,6 @@
-using Catalog.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Books;
 
-namespace Catalog.Catalog.Domain.Exceptions;
+namespace CatalogOld.Catalog.Domain.Exceptions;
 
 public class BookWithIdNotFoundException(Guid bookId) : DomainException($"Book with id - {bookId} not found")
 {

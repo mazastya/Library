@@ -1,4 +1,4 @@
-namespace Catalog.Catalog.Domain.Exceptions;
+namespace CatalogOld.Catalog.Domain.Exceptions;
 
 public class DomainException : Exception
 {

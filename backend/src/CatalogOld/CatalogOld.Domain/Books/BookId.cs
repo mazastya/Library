@@ -1,4 +1,4 @@
-namespace Catalog.Catalog.Domain.Books;
+namespace CatalogOld.Catalog.Domain.Books;
 
 public readonly record struct BookId
     (Guid IdValue)

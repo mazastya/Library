@@ -1,8 +1,8 @@
-using Catalog.Catalog.API.DTOs.Books;
-using Catalog.Catalog.Application.Books;
+using CatalogOld.Catalog.API.DTOs.Books;
+using CatalogOld.Catalog.Application.Books;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.Catalog.API.Controllers.Books;
+namespace CatalogOld.Catalog.API.Controllers.Books;
 
 [ApiController]
 [Route("api/books")]

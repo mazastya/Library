@@ -1,7 +1,7 @@
-using Catalog.Catalog.Domain.Books;
-using Catalog.Catalog.Domain.Exceptions;
+using CatalogOld.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Exceptions;
 
-namespace Catalog.Catalog.Application.Books;
+namespace CatalogOld.Catalog.Application.Books;
 
 public class BookService(IBookRepository bookRepository)
 {

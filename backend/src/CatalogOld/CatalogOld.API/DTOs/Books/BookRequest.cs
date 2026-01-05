@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Catalog.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Books;
 
-namespace Catalog.Catalog.API.DTOs.Books;
+namespace CatalogOld.Catalog.API.DTOs.Books;
 
 public record BookRequest(
     [Required]

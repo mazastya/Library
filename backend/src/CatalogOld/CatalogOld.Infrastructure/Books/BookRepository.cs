@@ -1,9 +1,9 @@
-using Catalog.Catalog.Domain.Books;
-using Catalog.Catalog.Domain.Exceptions;
-using Catalog.Catalog.Infrastructure.Persistence;
+using CatalogOld.Catalog.Domain.Books;
+using CatalogOld.Catalog.Domain.Exceptions;
+using CatalogOld.Catalog.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog.Catalog.Infrastructure.Books;
+namespace CatalogOld.Catalog.Infrastructure.Books;
 
 public class BookRepository(CatalogDbContext dbContext) : IBookRepository
 {
