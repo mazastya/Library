@@ -1,3 +1,5 @@
+using CatalogOld.CatalogOld.Domain.Books;
+
 namespace CatalogOld.Catalog.Domain.Books;
 
 public interface IBookRepository

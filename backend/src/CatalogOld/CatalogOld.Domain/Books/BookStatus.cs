@@ -1,4 +1,4 @@
-namespace CatalogOld.Catalog.Domain.Books;
+namespace CatalogOld.CatalogOld.Domain.Books;
 
 public enum BookStatus
 {

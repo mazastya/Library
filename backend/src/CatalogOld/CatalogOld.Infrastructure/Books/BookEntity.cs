@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using CatalogOld.Catalog.Domain.Books;
+using CatalogOld.CatalogOld.Domain.Books;
 
-namespace CatalogOld.Catalog.Infrastructure.Books;
+namespace CatalogOld.CatalogOld.Infrastructure.Books;
 
 [Table("Books")]
 public class BookEntity
@@ -15,8 +15,7 @@ public class BookEntity
     {
         var book = new Book(
             Title,
-            Author,
-            BookStatus
+            Author
         );
 
         return book;

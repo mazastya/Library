@@ -1,6 +1,7 @@
 using CatalogOld.Catalog.Domain.Books;
+using CatalogOld.CatalogOld.Domain.Books;
 
-namespace CatalogOld.Catalog.API.DTOs.Books;
+namespace CatalogOld.CatalogOld.API.DTOs.Books;
 
 public record BookResponse(
     Guid BookId,

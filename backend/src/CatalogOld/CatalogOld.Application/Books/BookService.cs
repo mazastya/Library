@@ -1,7 +1,8 @@
 using CatalogOld.Catalog.Domain.Books;
-using CatalogOld.Catalog.Domain.Exceptions;
+using CatalogOld.CatalogOld.Domain.Books;
+using CatalogOld.CatalogOld.Domain.Exceptions;
 
-namespace CatalogOld.Catalog.Application.Books;
+namespace CatalogOld.CatalogOld.Application.Books;
 
 public class BookService(IBookRepository bookRepository)
 {
@@ -14,7 +15,7 @@ public class BookService(IBookRepository bookRepository)
 
     public async Task<Book> CreateBookAsync(string title, string author, BookStatus? status)
     {
-        var book = new Book(title, author, status);
+        var book = new Book(title, author);
         await _bookRepository.AddAsync(book);
         await _bookRepository.SaveAsync();
         return book;

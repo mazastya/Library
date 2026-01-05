@@ -1,7 +1,8 @@
-using CatalogOld.Catalog.Application.Books;
 using CatalogOld.Catalog.Domain.Books;
-using CatalogOld.Catalog.Infrastructure.Books;
-using CatalogOld.Catalog.Infrastructure.Persistence;
+using CatalogOld.CatalogOld.Application.Books;
+using CatalogOld.CatalogOld.Domain.Books;
+using CatalogOld.CatalogOld.Infrastructure.Books;
+using CatalogOld.CatalogOld.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

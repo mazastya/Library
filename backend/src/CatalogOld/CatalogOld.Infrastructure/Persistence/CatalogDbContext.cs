@@ -1,7 +1,7 @@
-using CatalogOld.Catalog.Infrastructure.Books;
+using CatalogOld.CatalogOld.Infrastructure.Books;
 using Microsoft.EntityFrameworkCore;
 
-namespace CatalogOld.Catalog.Infrastructure.Persistence;
+namespace CatalogOld.CatalogOld.Infrastructure.Persistence;
 
 public class CatalogDbContext(DbContextOptions<CatalogDbContext> options) : DbContext(options)
 {
