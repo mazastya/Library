@@ -5,3 +5,9 @@
       context: .
       dockerfile: src/Catalog/Catalog.Web/Dockerfile
 
+  membership.web:
+    image: membership.web
+    build:
+      context: .
+      dockerfile: src/Membership/Membership.Web/Dockerfile
+
